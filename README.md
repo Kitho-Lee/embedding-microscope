@@ -1,6 +1,6 @@
 # Embedding Microscope
 
-**English** · [简体中文](README.zh-CN.md)
+**English** · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-Hant.md)
 
 [**Open the full online lab →**](https://kitho-lee.github.io/embedding-microscope/)
 
