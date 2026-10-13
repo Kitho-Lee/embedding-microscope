@@ -202,5 +202,9 @@
   "复制失败，请手动选择文本。": "Copy failed. Select the text manually.",
   "请先填写审核依据。": "Enter a review rationale first.",
   "请先载入示例或导入 JSON 数据集。": "Load an example or import a JSON dataset first.",
-  "演示数据已载入。请校验并运行；演示编码器不代表真实语义模型。": "Demo loaded. Validate and run; demo encoders are not semantic models."
+  "演示数据已载入。请校验并运行；演示编码器不代表真实语义模型。": "Demo loaded. Validate and run; demo encoders are not semantic models.",
+  "AI 找错资料？": "Wrong passage?",
+  "把错误变成测试。": "Turn failures into tests.",
+  "给它资料、问题和正确资料的标签。": "Bring documents, questions and relevance labels.",
+  "比较两个模型，找到会触发错误的问法，保存成回归测试。": "Compare two models, find a wording change that causes failure, and save it as a regression test."
 }
