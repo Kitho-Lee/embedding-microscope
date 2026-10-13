@@ -1,0 +1,33 @@
+{
+  "query": "李明向谁借钱？",
+  "documents": [
+    {
+      "id": "0",
+      "text": "张伟向李明借了100元。"
+    },
+    {
+      "id": "1",
+      "text": "李明向王芳借了100元。"
+    },
+    {
+      "id": "2",
+      "text": "王芳向张伟借了100元。"
+    }
+  ],
+  "relevant": [
+    "1"
+  ],
+  "models": [
+    "intfloat/multilingual-e5-small",
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  ],
+  "k": 1,
+  "budget": 63,
+  "approved": true,
+  "rules": [
+    {
+      "source": "李明向谁借钱？",
+      "replacement": "谁把钱借给了李明？"
+    }
+  ]
+}
