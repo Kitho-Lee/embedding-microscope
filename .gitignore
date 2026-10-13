@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+result.json
+
+work/
+hunt-result.json
+.DS_Store
+
+preview*.png
+docs/interface.png
