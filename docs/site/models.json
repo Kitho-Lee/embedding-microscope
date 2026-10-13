@@ -1,0 +1,1 @@
+{"demo": ["demo-word", "demo-char"], "local": ["intfloat/multilingual-e5-small", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"]}
