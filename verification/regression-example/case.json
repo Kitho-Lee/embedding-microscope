@@ -1,0 +1,40 @@
+{
+  "query": "谁把钱借给了李明？",
+  "baseline_query": "李明向谁借钱？",
+  "documents": [
+    {
+      "id": "0",
+      "text": "张伟向李明借了100元。"
+    },
+    {
+      "id": "1",
+      "text": "李明向王芳借了100元。"
+    },
+    {
+      "id": "2",
+      "text": "王芳向张伟借了100元。"
+    }
+  ],
+  "relevant": [
+    "1"
+  ],
+  "models": [
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  ],
+  "k": 1,
+  "expected": "At least one relevant document in top-k for baseline and perturbed queries",
+  "rules": [
+    {
+      "source": "李明向谁借钱？",
+      "replacement": "谁把钱借给了李明？"
+    }
+  ],
+  "rule_indices": [
+    0
+  ],
+  "model_revisions": {
+    "intfloat/multilingual-e5-small": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+  },
+  "semantic_validity": "User attests each rule and all combinations preserve relevance; not independently verified."
+}
