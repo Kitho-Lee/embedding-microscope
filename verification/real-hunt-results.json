@@ -1,0 +1,241 @@
+[
+  {
+    "schema_version": 1,
+    "config": {
+      "query": "寻找不上传数据的笔记软件",
+      "documents": [
+        {
+          "id": "0",
+          "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。"
+        },
+        {
+          "id": "1",
+          "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。"
+        },
+        {
+          "id": "2",
+          "text": "笔记软件支持离线编辑，联网后自动上传数据。"
+        }
+      ],
+      "relevant": [
+        "0"
+      ],
+      "models": [
+        "intfloat/multilingual-e5-small",
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+      ],
+      "k": 1,
+      "budget": 63,
+      "approved": true,
+      "rules": [
+        {
+          "source": "寻找",
+          "replacement": "找"
+        },
+        {
+          "source": "不上传数据",
+          "replacement": "数据仅保存在本地"
+        },
+        {
+          "source": "笔记软件",
+          "replacement": "笔记应用"
+        }
+      ]
+    },
+    "baseline": {
+      "intfloat/multilingual-e5-small": {
+        "ranking": [
+          {
+            "id": "0",
+            "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。",
+            "score": 0.9306185245513916,
+            "rank": 1,
+            "relevant": true
+          },
+          {
+            "id": "2",
+            "text": "笔记软件支持离线编辑，联网后自动上传数据。",
+            "score": 0.923157811164856,
+            "rank": 2,
+            "relevant": false
+          },
+          {
+            "id": "1",
+            "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。",
+            "score": 0.917555034160614,
+            "rank": 3,
+            "relevant": false
+          }
+        ],
+        "recall": 1.0,
+        "mrr": 1.0,
+        "ndcg": 1.0,
+        "failure": false
+      },
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+        "ranking": [
+          {
+            "id": "0",
+            "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。",
+            "score": 0.7096127271652222,
+            "rank": 1,
+            "relevant": true
+          },
+          {
+            "id": "2",
+            "text": "笔记软件支持离线编辑，联网后自动上传数据。",
+            "score": 0.6238994002342224,
+            "rank": 2,
+            "relevant": false
+          },
+          {
+            "id": "1",
+            "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。",
+            "score": 0.5416425466537476,
+            "rank": 3,
+            "relevant": false
+          }
+        ],
+        "recall": 1.0,
+        "mrr": 1.0,
+        "ndcg": 1.0,
+        "failure": false
+      }
+    },
+    "eligible_models": [
+      "intfloat/multilingual-e5-small",
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    ],
+    "evaluated": 7,
+    "search_space": 7,
+    "exhausted": true,
+    "minimality": "Minimum number of approved rules among tested combinations; cardinality-ordered exhaustive prefixes. No claim about arbitrary text edits.",
+    "semantic_validity": "User attests each rule and all combinations preserve relevance; not independently verified.",
+    "model_revisions": {
+      "intfloat/multilingual-e5-small": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+    },
+    "failure_count": 0,
+    "best": null,
+    "failures": []
+  },
+  {
+    "schema_version": 1,
+    "config": {
+      "query": "寻找价格低于500元的显示器",
+      "documents": [
+        {
+          "id": "0",
+          "text": "显示器价格为300元。"
+        },
+        {
+          "id": "1",
+          "text": "显示器价格为800元。"
+        },
+        {
+          "id": "2",
+          "text": "键盘价格为200元。"
+        }
+      ],
+      "relevant": [
+        "0"
+      ],
+      "models": [
+        "intfloat/multilingual-e5-small",
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+      ],
+      "k": 1,
+      "budget": 63,
+      "approved": true,
+      "rules": [
+        {
+          "source": "寻找",
+          "replacement": "找"
+        },
+        {
+          "source": "低于",
+          "replacement": "不到"
+        },
+        {
+          "source": "显示器",
+          "replacement": "电脑显示屏"
+        }
+      ]
+    },
+    "baseline": {
+      "intfloat/multilingual-e5-small": {
+        "ranking": [
+          {
+            "id": "0",
+            "text": "显示器价格为300元。",
+            "score": 0.9231575131416321,
+            "rank": 1,
+            "relevant": true
+          },
+          {
+            "id": "1",
+            "text": "显示器价格为800元。",
+            "score": 0.9219233393669128,
+            "rank": 2,
+            "relevant": false
+          },
+          {
+            "id": "2",
+            "text": "键盘价格为200元。",
+            "score": 0.88576340675354,
+            "rank": 3,
+            "relevant": false
+          }
+        ],
+        "recall": 1.0,
+        "mrr": 1.0,
+        "ndcg": 1.0,
+        "failure": false
+      },
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+        "ranking": [
+          {
+            "id": "1",
+            "text": "显示器价格为800元。",
+            "score": 0.6720874905586243,
+            "rank": 1,
+            "relevant": false
+          },
+          {
+            "id": "0",
+            "text": "显示器价格为300元。",
+            "score": 0.5660701394081116,
+            "rank": 2,
+            "relevant": true
+          },
+          {
+            "id": "2",
+            "text": "键盘价格为200元。",
+            "score": 0.5285839438438416,
+            "rank": 3,
+            "relevant": false
+          }
+        ],
+        "recall": 0.0,
+        "mrr": 0.5,
+        "ndcg": 0.0,
+        "failure": true
+      }
+    },
+    "eligible_models": [
+      "intfloat/multilingual-e5-small"
+    ],
+    "evaluated": 7,
+    "search_space": 7,
+    "exhausted": true,
+    "minimality": "Minimum number of approved rules among tested combinations; cardinality-ordered exhaustive prefixes. No claim about arbitrary text edits.",
+    "semantic_validity": "User attests each rule and all combinations preserve relevance; not independently verified.",
+    "model_revisions": {
+      "intfloat/multilingual-e5-small": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+    },
+    "failure_count": 0,
+    "best": null,
+    "failures": []
+  }
+]

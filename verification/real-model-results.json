@@ -1,0 +1,1137 @@
+[
+  {
+    "name": "negation",
+    "experiment": {
+      "config": {
+        "query": "寻找不上传数据的笔记软件",
+        "variant": "寻找会上传数据的笔记软件",
+        "kind": "condition_change",
+        "factor": "否定",
+        "documents": [
+          {
+            "id": "0",
+            "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。"
+          },
+          {
+            "id": "1",
+            "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。"
+          },
+          {
+            "id": "2",
+            "text": "笔记软件支持离线编辑，联网后自动上传数据。"
+          }
+        ],
+        "relevant_before": [
+          "0"
+        ],
+        "relevant_after": [
+          "1",
+          "2"
+        ],
+        "models": [
+          "intfloat/multilingual-e5-small",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+        ],
+        "k": 1
+      },
+      "results": [
+        {
+          "model": "intfloat/multilingual-e5-small",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。",
+                "score": 0.9306182861328125,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "笔记软件支持离线编辑，联网后自动上传数据。",
+                "score": 0.9231575727462769,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "1",
+                "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。",
+                "score": 0.9175545573234558,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "2",
+                "text": "笔记软件支持离线编辑，联网后自动上传数据。",
+                "score": 0.9255598783493042,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "1",
+                "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。",
+                "score": 0.9160870313644409,
+                "rank": 2,
+                "relevant": true
+              },
+              {
+                "id": "0",
+                "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。",
+                "score": 0.9144210815429688,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 0.5,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "top_k_overlap": 0.0,
+          "regression": true,
+          "tokenization": {
+            "max_tokens": 512,
+            "truncated": []
+          }
+        },
+        {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。",
+                "score": 0.7096124887466431,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "笔记软件支持离线编辑，联网后自动上传数据。",
+                "score": 0.6238994598388672,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "1",
+                "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。",
+                "score": 0.5416426062583923,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "2",
+                "text": "笔记软件支持离线编辑，联网后自动上传数据。",
+                "score": 0.6557416915893555,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "1",
+                "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。",
+                "score": 0.5957335829734802,
+                "rank": 2,
+                "relevant": true
+              },
+              {
+                "id": "0",
+                "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。",
+                "score": 0.5944340825080872,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 0.5,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "top_k_overlap": 0.0,
+          "regression": true,
+          "tokenization": {
+            "max_tokens": 128,
+            "truncated": []
+          }
+        }
+      ],
+      "schema_version": 1,
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.5.4",
+        "sentence_transformers": "6.1.0",
+        "encoding": "normalized cosine; E5 query/passage prefixes; CPU float32",
+        "model_revisions": {
+          "intfloat/multilingual-e5-small": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+        },
+        "torch": "2.14.1",
+        "transformers": "5.19.0"
+      },
+      "failure_definition": "No labeled relevant document in top-k; regression means recall@k decreased.",
+      "label_source": "User-supplied labels; not independently verified."
+    }
+  },
+  {
+    "name": "paraphrase",
+    "experiment": {
+      "config": {
+        "query": "寻找不上传数据的笔记软件",
+        "variant": "找一款笔记应用，资料只保留在设备本地",
+        "kind": "meaning_preserving",
+        "factor": "同义改写",
+        "documents": [
+          {
+            "id": "0",
+            "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。"
+          },
+          {
+            "id": "1",
+            "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。"
+          },
+          {
+            "id": "2",
+            "text": "笔记软件支持离线编辑，联网后自动上传数据。"
+          }
+        ],
+        "relevant_before": [
+          "0"
+        ],
+        "relevant_after": [
+          "0"
+        ],
+        "models": [
+          "intfloat/multilingual-e5-small",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+        ],
+        "k": 1
+      },
+      "results": [
+        {
+          "model": "intfloat/multilingual-e5-small",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。",
+                "score": 0.9306182861328125,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "笔记软件支持离线编辑，联网后自动上传数据。",
+                "score": 0.9231575727462769,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "1",
+                "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。",
+                "score": 0.9175545573234558,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。",
+                "score": 0.91960608959198,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "笔记软件支持离线编辑，联网后自动上传数据。",
+                "score": 0.8986269235610962,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "1",
+                "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。",
+                "score": 0.8968201875686646,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "top_k_overlap": 1.0,
+          "regression": false,
+          "tokenization": {
+            "max_tokens": 512,
+            "truncated": []
+          }
+        },
+        {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。",
+                "score": 0.7096124887466431,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "笔记软件支持离线编辑，联网后自动上传数据。",
+                "score": 0.6238994598388672,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "1",
+                "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。",
+                "score": 0.5416426062583923,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。",
+                "score": 0.7528290748596191,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "笔记软件支持离线编辑，联网后自动上传数据。",
+                "score": 0.5291186571121216,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "1",
+                "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。",
+                "score": 0.44561970233917236,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "top_k_overlap": 1.0,
+          "regression": false,
+          "tokenization": {
+            "max_tokens": 128,
+            "truncated": []
+          }
+        }
+      ],
+      "schema_version": 1,
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.5.4",
+        "sentence_transformers": "6.1.0",
+        "encoding": "normalized cosine; E5 query/passage prefixes; CPU float32",
+        "model_revisions": {
+          "intfloat/multilingual-e5-small": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+        },
+        "torch": "2.14.1",
+        "transformers": "5.19.0"
+      },
+      "failure_definition": "No labeled relevant document in top-k; regression means recall@k decreased.",
+      "label_source": "User-supplied labels; not independently verified."
+    }
+  },
+  {
+    "name": "number",
+    "experiment": {
+      "config": {
+        "query": "寻找价格低于500元的显示器",
+        "variant": "寻找价格高于500元的显示器",
+        "kind": "condition_change",
+        "factor": "数字阈值",
+        "documents": [
+          {
+            "id": "0",
+            "text": "显示器价格为300元。"
+          },
+          {
+            "id": "1",
+            "text": "显示器价格为800元。"
+          },
+          {
+            "id": "2",
+            "text": "键盘价格为200元。"
+          }
+        ],
+        "relevant_before": [
+          "0"
+        ],
+        "relevant_after": [
+          "1"
+        ],
+        "models": [
+          "intfloat/multilingual-e5-small",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+        ],
+        "k": 1
+      },
+      "results": [
+        {
+          "model": "intfloat/multilingual-e5-small",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "显示器价格为300元。",
+                "score": 0.9231576323509216,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "1",
+                "text": "显示器价格为800元。",
+                "score": 0.9219229221343994,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "2",
+                "text": "键盘价格为200元。",
+                "score": 0.8857634663581848,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "显示器价格为300元。",
+                "score": 0.924610435962677,
+                "rank": 1,
+                "relevant": false
+              },
+              {
+                "id": "1",
+                "text": "显示器价格为800元。",
+                "score": 0.9230282306671143,
+                "rank": 2,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "键盘价格为200元。",
+                "score": 0.8882815837860107,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 0.0,
+            "mrr": 0.5,
+            "ndcg": 0.0,
+            "failure": true
+          },
+          "top_k_overlap": 1.0,
+          "regression": true,
+          "tokenization": {
+            "max_tokens": 512,
+            "truncated": []
+          }
+        },
+        {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "1",
+                "text": "显示器价格为800元。",
+                "score": 0.672087550163269,
+                "rank": 1,
+                "relevant": false
+              },
+              {
+                "id": "0",
+                "text": "显示器价格为300元。",
+                "score": 0.5660700798034668,
+                "rank": 2,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "键盘价格为200元。",
+                "score": 0.5285843014717102,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 0.0,
+            "mrr": 0.5,
+            "ndcg": 0.0,
+            "failure": true
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "1",
+                "text": "显示器价格为800元。",
+                "score": 0.7103638052940369,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "0",
+                "text": "显示器价格为300元。",
+                "score": 0.5595133304595947,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "2",
+                "text": "键盘价格为200元。",
+                "score": 0.5384582281112671,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "top_k_overlap": 1.0,
+          "regression": false,
+          "tokenization": {
+            "max_tokens": 128,
+            "truncated": []
+          }
+        }
+      ],
+      "schema_version": 1,
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.5.4",
+        "sentence_transformers": "6.1.0",
+        "encoding": "normalized cosine; E5 query/passage prefixes; CPU float32",
+        "model_revisions": {
+          "intfloat/multilingual-e5-small": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+        },
+        "torch": "2.14.1",
+        "transformers": "5.19.0"
+      },
+      "failure_definition": "No labeled relevant document in top-k; regression means recall@k decreased.",
+      "label_source": "User-supplied labels; not independently verified."
+    }
+  },
+  {
+    "name": "entity",
+    "experiment": {
+      "config": {
+        "query": "查询北京的天气",
+        "variant": "查询上海的天气",
+        "kind": "condition_change",
+        "factor": "实体",
+        "documents": [
+          {
+            "id": "0",
+            "text": "北京今天晴，最高气温25度。"
+          },
+          {
+            "id": "1",
+            "text": "上海今天雨，最高气温23度。"
+          },
+          {
+            "id": "2",
+            "text": "广州今天阴，最高气温28度。"
+          }
+        ],
+        "relevant_before": [
+          "0"
+        ],
+        "relevant_after": [
+          "1"
+        ],
+        "models": [
+          "intfloat/multilingual-e5-small",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+        ],
+        "k": 1
+      },
+      "results": [
+        {
+          "model": "intfloat/multilingual-e5-small",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "北京今天晴，最高气温25度。",
+                "score": 0.9026423692703247,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "1",
+                "text": "上海今天雨，最高气温23度。",
+                "score": 0.8627626895904541,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "2",
+                "text": "广州今天阴，最高气温28度。",
+                "score": 0.8591855764389038,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "1",
+                "text": "上海今天雨，最高气温23度。",
+                "score": 0.9064772129058838,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "0",
+                "text": "北京今天晴，最高气温25度。",
+                "score": 0.864044189453125,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "2",
+                "text": "广州今天阴，最高气温28度。",
+                "score": 0.85639488697052,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "top_k_overlap": 0.0,
+          "regression": false,
+          "tokenization": {
+            "max_tokens": 512,
+            "truncated": []
+          }
+        },
+        {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "北京今天晴，最高气温25度。",
+                "score": 0.732431173324585,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "1",
+                "text": "上海今天雨，最高气温23度。",
+                "score": 0.6682215929031372,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "2",
+                "text": "广州今天阴，最高气温28度。",
+                "score": 0.6362173557281494,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "1",
+                "text": "上海今天雨，最高气温23度。",
+                "score": 0.7425335645675659,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "0",
+                "text": "北京今天晴，最高气温25度。",
+                "score": 0.6685134172439575,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "2",
+                "text": "广州今天阴，最高气温28度。",
+                "score": 0.6667200326919556,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "top_k_overlap": 0.0,
+          "regression": false,
+          "tokenization": {
+            "max_tokens": 128,
+            "truncated": []
+          }
+        }
+      ],
+      "schema_version": 1,
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.5.4",
+        "sentence_transformers": "6.1.0",
+        "encoding": "normalized cosine; E5 query/passage prefixes; CPU float32",
+        "model_revisions": {
+          "intfloat/multilingual-e5-small": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+        },
+        "torch": "2.14.1",
+        "transformers": "5.19.0"
+      },
+      "failure_definition": "No labeled relevant document in top-k; regression means recall@k decreased.",
+      "label_source": "User-supplied labels; not independently verified."
+    }
+  },
+  {
+    "name": "direction",
+    "experiment": {
+      "config": {
+        "query": "谁向李明借钱？",
+        "variant": "李明向谁借钱？",
+        "kind": "condition_change",
+        "factor": "关系方向",
+        "documents": [
+          {
+            "id": "0",
+            "text": "张伟向李明借了100元。"
+          },
+          {
+            "id": "1",
+            "text": "李明向王芳借了100元。"
+          },
+          {
+            "id": "2",
+            "text": "王芳向张伟借了100元。"
+          }
+        ],
+        "relevant_before": [
+          "0"
+        ],
+        "relevant_after": [
+          "1"
+        ],
+        "models": [
+          "intfloat/multilingual-e5-small",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+        ],
+        "k": 1
+      },
+      "results": [
+        {
+          "model": "intfloat/multilingual-e5-small",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "1",
+                "text": "李明向王芳借了100元。",
+                "score": 0.9131214022636414,
+                "rank": 1,
+                "relevant": false
+              },
+              {
+                "id": "0",
+                "text": "张伟向李明借了100元。",
+                "score": 0.910136878490448,
+                "rank": 2,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "王芳向张伟借了100元。",
+                "score": 0.8612396717071533,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 0.0,
+            "mrr": 0.5,
+            "ndcg": 0.0,
+            "failure": true
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "1",
+                "text": "李明向王芳借了100元。",
+                "score": 0.911841869354248,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "0",
+                "text": "张伟向李明借了100元。",
+                "score": 0.9078696966171265,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "2",
+                "text": "王芳向张伟借了100元。",
+                "score": 0.8577523231506348,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "top_k_overlap": 1.0,
+          "regression": false,
+          "tokenization": {
+            "max_tokens": 512,
+            "truncated": []
+          }
+        },
+        {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "1",
+                "text": "李明向王芳借了100元。",
+                "score": 0.5435292720794678,
+                "rank": 1,
+                "relevant": false
+              },
+              {
+                "id": "0",
+                "text": "张伟向李明借了100元。",
+                "score": 0.5389822721481323,
+                "rank": 2,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "王芳向张伟借了100元。",
+                "score": 0.4608684182167053,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 0.0,
+            "mrr": 0.5,
+            "ndcg": 0.0,
+            "failure": true
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "1",
+                "text": "李明向王芳借了100元。",
+                "score": 0.5355358123779297,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "0",
+                "text": "张伟向李明借了100元。",
+                "score": 0.5164300203323364,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "2",
+                "text": "王芳向张伟借了100元。",
+                "score": 0.42008107900619507,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "top_k_overlap": 1.0,
+          "regression": false,
+          "tokenization": {
+            "max_tokens": 128,
+            "truncated": []
+          }
+        }
+      ],
+      "schema_version": 1,
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.5.4",
+        "sentence_transformers": "6.1.0",
+        "encoding": "normalized cosine; E5 query/passage prefixes; CPU float32",
+        "model_revisions": {
+          "intfloat/multilingual-e5-small": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+        },
+        "torch": "2.14.1",
+        "transformers": "5.19.0"
+      },
+      "failure_definition": "No labeled relevant document in top-k; regression means recall@k decreased.",
+      "label_source": "User-supplied labels; not independently verified."
+    }
+  },
+  {
+    "name": "english_control",
+    "experiment": {
+      "config": {
+        "query": "A cat sleeping on a sofa",
+        "variant": "A feline resting on a couch",
+        "kind": "meaning_preserving",
+        "factor": "同义改写",
+        "documents": [
+          {
+            "id": "0",
+            "text": "A cat is sleeping on the sofa."
+          },
+          {
+            "id": "1",
+            "text": "A car drives on the highway."
+          },
+          {
+            "id": "2",
+            "text": "A fish swims underwater."
+          }
+        ],
+        "relevant_before": [
+          "0"
+        ],
+        "relevant_after": [
+          "0"
+        ],
+        "models": [
+          "intfloat/multilingual-e5-small",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+        ],
+        "k": 1
+      },
+      "results": [
+        {
+          "model": "intfloat/multilingual-e5-small",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "A cat is sleeping on the sofa.",
+                "score": 0.9211366176605225,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "A fish swims underwater.",
+                "score": 0.6880065202713013,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "1",
+                "text": "A car drives on the highway.",
+                "score": 0.6392769813537598,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "A cat is sleeping on the sofa.",
+                "score": 0.836753249168396,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "2",
+                "text": "A fish swims underwater.",
+                "score": 0.7009932994842529,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "1",
+                "text": "A car drives on the highway.",
+                "score": 0.6615270972251892,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "top_k_overlap": 1.0,
+          "regression": false,
+          "tokenization": {
+            "max_tokens": 512,
+            "truncated": []
+          }
+        },
+        {
+          "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "demo": false,
+          "before": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "A cat is sleeping on the sofa.",
+                "score": 0.9885586500167847,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "1",
+                "text": "A car drives on the highway.",
+                "score": 0.15740087628364563,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "2",
+                "text": "A fish swims underwater.",
+                "score": 0.029952986165881157,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "after": {
+            "ranking": [
+              {
+                "id": "0",
+                "text": "A cat is sleeping on the sofa.",
+                "score": 0.8265459537506104,
+                "rank": 1,
+                "relevant": true
+              },
+              {
+                "id": "1",
+                "text": "A car drives on the highway.",
+                "score": 0.12657898664474487,
+                "rank": 2,
+                "relevant": false
+              },
+              {
+                "id": "2",
+                "text": "A fish swims underwater.",
+                "score": 0.023812897503376007,
+                "rank": 3,
+                "relevant": false
+              }
+            ],
+            "recall": 1.0,
+            "mrr": 1.0,
+            "ndcg": 1.0,
+            "failure": false
+          },
+          "top_k_overlap": 1.0,
+          "regression": false,
+          "tokenization": {
+            "max_tokens": 128,
+            "truncated": []
+          }
+        }
+      ],
+      "schema_version": 1,
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.5.4",
+        "sentence_transformers": "6.1.0",
+        "encoding": "normalized cosine; E5 query/passage prefixes; CPU float32",
+        "model_revisions": {
+          "intfloat/multilingual-e5-small": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+          "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+        },
+        "torch": "2.14.1",
+        "transformers": "5.19.0"
+      },
+      "failure_definition": "No labeled relevant document in top-k; regression means recall@k decreased.",
+      "label_source": "User-supplied labels; not independently verified."
+    }
+  }
+]

@@ -1,0 +1,189 @@
+[
+  {
+    "query": "寻找不上传数据的笔记软件",
+    "variant": "寻找会上传数据的笔记软件",
+    "kind": "condition_change",
+    "factor": "否定",
+    "documents": [
+      {
+        "id": "0",
+        "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。"
+      },
+      {
+        "id": "1",
+        "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。"
+      },
+      {
+        "id": "2",
+        "text": "笔记软件支持离线编辑，联网后自动上传数据。"
+      }
+    ],
+    "relevant_before": [
+      "0"
+    ],
+    "relevant_after": [
+      "1",
+      "2"
+    ],
+    "models": [
+      "intfloat/multilingual-e5-small",
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    ],
+    "k": 1
+  },
+  {
+    "query": "寻找不上传数据的笔记软件",
+    "variant": "找一款笔记应用，资料只保留在设备本地",
+    "kind": "meaning_preserving",
+    "factor": "同义改写",
+    "documents": [
+      {
+        "id": "0",
+        "text": "本地笔记软件，断网可用，所有数据保存在设备上，不上传数据。"
+      },
+      {
+        "id": "1",
+        "text": "云端笔记软件，需要联网才能使用，所有数据自动上传。"
+      },
+      {
+        "id": "2",
+        "text": "笔记软件支持离线编辑，联网后自动上传数据。"
+      }
+    ],
+    "relevant_before": [
+      "0"
+    ],
+    "relevant_after": [
+      "0"
+    ],
+    "models": [
+      "intfloat/multilingual-e5-small",
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    ],
+    "k": 1
+  },
+  {
+    "query": "寻找价格低于500元的显示器",
+    "variant": "寻找价格高于500元的显示器",
+    "kind": "condition_change",
+    "factor": "数字阈值",
+    "documents": [
+      {
+        "id": "0",
+        "text": "显示器价格为300元。"
+      },
+      {
+        "id": "1",
+        "text": "显示器价格为800元。"
+      },
+      {
+        "id": "2",
+        "text": "键盘价格为200元。"
+      }
+    ],
+    "relevant_before": [
+      "0"
+    ],
+    "relevant_after": [
+      "1"
+    ],
+    "models": [
+      "intfloat/multilingual-e5-small",
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    ],
+    "k": 1
+  },
+  {
+    "query": "查询北京的天气",
+    "variant": "查询上海的天气",
+    "kind": "condition_change",
+    "factor": "实体",
+    "documents": [
+      {
+        "id": "0",
+        "text": "北京今天晴，最高气温25度。"
+      },
+      {
+        "id": "1",
+        "text": "上海今天雨，最高气温23度。"
+      },
+      {
+        "id": "2",
+        "text": "广州今天阴，最高气温28度。"
+      }
+    ],
+    "relevant_before": [
+      "0"
+    ],
+    "relevant_after": [
+      "1"
+    ],
+    "models": [
+      "intfloat/multilingual-e5-small",
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    ],
+    "k": 1
+  },
+  {
+    "query": "谁向李明借钱？",
+    "variant": "李明向谁借钱？",
+    "kind": "condition_change",
+    "factor": "关系方向",
+    "documents": [
+      {
+        "id": "0",
+        "text": "张伟向李明借了100元。"
+      },
+      {
+        "id": "1",
+        "text": "李明向王芳借了100元。"
+      },
+      {
+        "id": "2",
+        "text": "王芳向张伟借了100元。"
+      }
+    ],
+    "relevant_before": [
+      "0"
+    ],
+    "relevant_after": [
+      "1"
+    ],
+    "models": [
+      "intfloat/multilingual-e5-small",
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    ],
+    "k": 1
+  },
+  {
+    "query": "A cat sleeping on a sofa",
+    "variant": "A feline resting on a couch",
+    "kind": "meaning_preserving",
+    "factor": "同义改写",
+    "documents": [
+      {
+        "id": "0",
+        "text": "A cat is sleeping on the sofa."
+      },
+      {
+        "id": "1",
+        "text": "A car drives on the highway."
+      },
+      {
+        "id": "2",
+        "text": "A fish swims underwater."
+      }
+    ],
+    "relevant_before": [
+      "0"
+    ],
+    "relevant_after": [
+      "0"
+    ],
+    "models": [
+      "intfloat/multilingual-e5-small",
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    ],
+    "k": 1
+  }
+]

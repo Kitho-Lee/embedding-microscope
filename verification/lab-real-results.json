@@ -1,0 +1,444 @@
+{
+  "id": "47fade3330cb4c3ca79d427e48d2ae03",
+  "schema_version": 2,
+  "created_at": "2026-10-13T14:56:59.471122+00:00",
+  "config": {
+    "documents": [
+      {
+        "id": "0",
+        "text": "张伟向李明借了100元。"
+      },
+      {
+        "id": "1",
+        "text": "李明向王芳借了100元。"
+      },
+      {
+        "id": "2",
+        "text": "王芳向张伟借了100元。"
+      }
+    ],
+    "queries": [
+      {
+        "id": "borrow-direction",
+        "text": "李明向谁借钱？",
+        "relevant": [
+          "1"
+        ],
+        "rules": [
+          {
+            "source": "李明向谁借钱",
+            "replacement": "谁把钱借给了李明"
+          },
+          {
+            "source": "？",
+            "replacement": "?"
+          }
+        ]
+      },
+      {
+        "id": "baseline-direction",
+        "text": "谁向李明借钱？",
+        "relevant": [
+          "0"
+        ],
+        "rules": []
+      }
+    ],
+    "models": [
+      "intfloat/multilingual-e5-small",
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    ],
+    "k": 1,
+    "budget_per_query": 63
+  },
+  "baselines": {
+    "borrow-direction": {
+      "intfloat/multilingual-e5-small": {
+        "ranking": [
+          {
+            "id": "1",
+            "text": "李明向王芳借了100元。",
+            "score": 0.911841630935669,
+            "rank": 1,
+            "relevant": true
+          },
+          {
+            "id": "0",
+            "text": "张伟向李明借了100元。",
+            "score": 0.907869815826416,
+            "rank": 2,
+            "relevant": false
+          },
+          {
+            "id": "2",
+            "text": "王芳向张伟借了100元。",
+            "score": 0.8577530384063721,
+            "rank": 3,
+            "relevant": false
+          }
+        ],
+        "recall": 1.0,
+        "mrr": 1.0,
+        "ndcg": 1.0,
+        "failure": false
+      },
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+        "ranking": [
+          {
+            "id": "1",
+            "text": "李明向王芳借了100元。",
+            "score": 0.5355358719825745,
+            "rank": 1,
+            "relevant": true
+          },
+          {
+            "id": "0",
+            "text": "张伟向李明借了100元。",
+            "score": 0.516430139541626,
+            "rank": 2,
+            "relevant": false
+          },
+          {
+            "id": "2",
+            "text": "王芳向张伟借了100元。",
+            "score": 0.4200809895992279,
+            "rank": 3,
+            "relevant": false
+          }
+        ],
+        "recall": 1.0,
+        "mrr": 1.0,
+        "ndcg": 1.0,
+        "failure": false
+      }
+    },
+    "baseline-direction": {
+      "intfloat/multilingual-e5-small": {
+        "ranking": [
+          {
+            "id": "1",
+            "text": "李明向王芳借了100元。",
+            "score": 0.9131214022636414,
+            "rank": 1,
+            "relevant": false
+          },
+          {
+            "id": "0",
+            "text": "张伟向李明借了100元。",
+            "score": 0.910136878490448,
+            "rank": 2,
+            "relevant": true
+          },
+          {
+            "id": "2",
+            "text": "王芳向张伟借了100元。",
+            "score": 0.8612396717071533,
+            "rank": 3,
+            "relevant": false
+          }
+        ],
+        "recall": 0.0,
+        "mrr": 0.5,
+        "ndcg": 0.0,
+        "failure": true
+      },
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+        "ranking": [
+          {
+            "id": "1",
+            "text": "李明向王芳借了100元。",
+            "score": 0.5435292720794678,
+            "rank": 1,
+            "relevant": false
+          },
+          {
+            "id": "0",
+            "text": "张伟向李明借了100元。",
+            "score": 0.5389822721481323,
+            "rank": 2,
+            "relevant": true
+          },
+          {
+            "id": "2",
+            "text": "王芳向张伟借了100元。",
+            "score": 0.4608684182167053,
+            "rank": 3,
+            "relevant": false
+          }
+        ],
+        "recall": 0.0,
+        "mrr": 0.5,
+        "ndcg": 0.0,
+        "failure": true
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "d9062995d3a56060c0ea",
+      "query_id": "borrow-direction",
+      "text": "谁把钱借给了李明？",
+      "rule_indices": [
+        0
+      ],
+      "edit_count": 1,
+      "results": {
+        "intfloat/multilingual-e5-small": {
+          "ranking": [
+            {
+              "id": "1",
+              "text": "李明向王芳借了100元。",
+              "score": 0.9127528667449951,
+              "rank": 1,
+              "relevant": true
+            },
+            {
+              "id": "0",
+              "text": "张伟向李明借了100元。",
+              "score": 0.9097663164138794,
+              "rank": 2,
+              "relevant": false
+            },
+            {
+              "id": "2",
+              "text": "王芳向张伟借了100元。",
+              "score": 0.8602083325386047,
+              "rank": 3,
+              "relevant": false
+            }
+          ],
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "failure": false
+        },
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+          "ranking": [
+            {
+              "id": "0",
+              "text": "张伟向李明借了100元。",
+              "score": 0.4728376865386963,
+              "rank": 1,
+              "relevant": false
+            },
+            {
+              "id": "1",
+              "text": "李明向王芳借了100元。",
+              "score": 0.471825510263443,
+              "rank": 2,
+              "relevant": true
+            },
+            {
+              "id": "2",
+              "text": "王芳向张伟借了100元。",
+              "score": 0.3812924325466156,
+              "rank": 3,
+              "relevant": false
+            }
+          ],
+          "recall": 0.0,
+          "mrr": 0.5,
+          "ndcg": 0.0,
+          "failure": true
+        }
+      },
+      "winners": [
+        "intfloat/multilingual-e5-small"
+      ],
+      "losers": [
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+      ],
+      "differential": true,
+      "introduced_failures": [
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+      ],
+      "priority": 1001,
+      "review": {
+        "status": "accepted",
+        "note": "删除问号替换后，同义改写保持相关文档1，分歧仍复现。",
+        "reviewed_at": "2026-10-13T14:56:59.509876+00:00"
+      },
+      "origin": "search",
+      "truncation": {
+        "intfloat/multilingual-e5-small": {
+          "query": false,
+          "documents": []
+        },
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+          "query": false,
+          "documents": []
+        }
+      }
+    },
+    {
+      "id": "99ff35053d9d1cebb076",
+      "query_id": "borrow-direction",
+      "text": "谁把钱借给了李明?",
+      "rule_indices": [
+        0,
+        1
+      ],
+      "edit_count": 2,
+      "results": {
+        "intfloat/multilingual-e5-small": {
+          "ranking": [
+            {
+              "id": "1",
+              "text": "李明向王芳借了100元。",
+              "score": 0.9127529859542847,
+              "rank": 1,
+              "relevant": true
+            },
+            {
+              "id": "0",
+              "text": "张伟向李明借了100元。",
+              "score": 0.9097661972045898,
+              "rank": 2,
+              "relevant": false
+            },
+            {
+              "id": "2",
+              "text": "王芳向张伟借了100元。",
+              "score": 0.8602083325386047,
+              "rank": 3,
+              "relevant": false
+            }
+          ],
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "failure": false
+        },
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+          "ranking": [
+            {
+              "id": "0",
+              "text": "张伟向李明借了100元。",
+              "score": 0.4728377163410187,
+              "rank": 1,
+              "relevant": false
+            },
+            {
+              "id": "1",
+              "text": "李明向王芳借了100元。",
+              "score": 0.471825510263443,
+              "rank": 2,
+              "relevant": true
+            },
+            {
+              "id": "2",
+              "text": "王芳向张伟借了100元。",
+              "score": 0.38129255175590515,
+              "rank": 3,
+              "relevant": false
+            }
+          ],
+          "recall": 0.0,
+          "mrr": 0.5,
+          "ndcg": 0.0,
+          "failure": true
+        }
+      },
+      "winners": [
+        "intfloat/multilingual-e5-small"
+      ],
+      "losers": [
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+      ],
+      "differential": true,
+      "introduced_failures": [
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+      ],
+      "priority": 1001,
+      "review": {
+        "status": "accepted",
+        "note": "两个问句均询问李明的出借人；文档1说明出借人为王芳。",
+        "reviewed_at": "2026-10-13T14:56:59.476228+00:00"
+      },
+      "origin": "search",
+      "truncation": {
+        "intfloat/multilingual-e5-small": {
+          "query": false,
+          "documents": []
+        },
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+          "query": false,
+          "documents": []
+        }
+      }
+    }
+  ],
+  "evaluated": 5,
+  "search_space": 5,
+  "exhausted": true,
+  "model_revisions": {
+    "intfloat/multilingual-e5-small": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+  },
+  "provenance": {
+    "dataset_sha256": "1aebe6661ca4f27c0eeda8a990ce5414057ec1a9507ef112f61bef627e371ee9",
+    "packages": {
+      "numpy": "2.5.4",
+      "torch": "2.14.1",
+      "sentence-transformers": "6.1.0",
+      "transformers": "5.19.0"
+    },
+    "retrieval": "exact normalized cosine",
+    "device": "cpu",
+    "search": "cardinality-ordered finite edit subsets"
+  },
+  "review_log": [
+    {
+      "candidate_id": "99ff35053d9d1cebb076",
+      "status": "accepted",
+      "note": "两个问句均询问李明的出借人；文档1说明出借人为王芳。",
+      "reviewed_at": "2026-10-13T14:56:59.476228+00:00"
+    },
+    {
+      "candidate_id": "d9062995d3a56060c0ea",
+      "status": "accepted",
+      "note": "删除问号替换后，同义改写保持相关文档1，分歧仍复现。",
+      "reviewed_at": "2026-10-13T14:56:59.509876+00:00"
+    }
+  ],
+  "reductions": [
+    {
+      "source_id": "99ff35053d9d1cebb076",
+      "result_id": "d9062995d3a56060c0ea",
+      "before": 2,
+      "after": 1,
+      "trace": [
+        {
+          "indices": [],
+          "text": "李明向谁借钱？",
+          "preserves_differential": false
+        },
+        {
+          "indices": [
+            0
+          ],
+          "text": "谁把钱借给了李明？",
+          "preserves_differential": true
+        },
+        {
+          "indices": [
+            1
+          ],
+          "text": "李明向谁借钱?",
+          "preserves_differential": false
+        },
+        {
+          "indices": [
+            0,
+            1
+          ],
+          "text": "谁把钱借给了李明?",
+          "preserves_differential": true
+        }
+      ],
+      "minimality": "Exact minimum rule cardinality among subsets of the selected candidate's edits; no claim about all rewrites or character minimality.",
+      "semantic_status": "pending"
+    }
+  ],
+  "limitations": "Candidate semantics and labels need review. Priority uses rank differences, not cross-model cosine calibration."
+}

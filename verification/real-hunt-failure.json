@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "config": {
+    "query": "李明向谁借钱？",
+    "documents": [
+      {
+        "id": "0",
+        "text": "张伟向李明借了100元。"
+      },
+      {
+        "id": "1",
+        "text": "李明向王芳借了100元。"
+      },
+      {
+        "id": "2",
+        "text": "王芳向张伟借了100元。"
+      }
+    ],
+    "relevant": [
+      "1"
+    ],
+    "models": [
+      "intfloat/multilingual-e5-small",
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    ],
+    "k": 1,
+    "budget": 63,
+    "approved": true,
+    "rules": [
+      {
+        "source": "李明向谁借钱？",
+        "replacement": "谁把钱借给了李明？"
+      }
+    ]
+  },
+  "baseline": {
+    "intfloat/multilingual-e5-small": {
+      "ranking": [
+        {
+          "id": "1",
+          "text": "李明向王芳借了100元。",
+          "score": 0.9118415713310242,
+          "rank": 1,
+          "relevant": true
+        },
+        {
+          "id": "0",
+          "text": "张伟向李明借了100元。",
+          "score": 0.907869815826416,
+          "rank": 2,
+          "relevant": false
+        },
+        {
+          "id": "2",
+          "text": "王芳向张伟借了100元。",
+          "score": 0.8577531576156616,
+          "rank": 3,
+          "relevant": false
+        }
+      ],
+      "recall": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "failure": false
+    },
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+      "ranking": [
+        {
+          "id": "1",
+          "text": "李明向王芳借了100元。",
+          "score": 0.5355358123779297,
+          "rank": 1,
+          "relevant": true
+        },
+        {
+          "id": "0",
+          "text": "张伟向李明借了100元。",
+          "score": 0.5164300203323364,
+          "rank": 2,
+          "relevant": false
+        },
+        {
+          "id": "2",
+          "text": "王芳向张伟借了100元。",
+          "score": 0.42008084058761597,
+          "rank": 3,
+          "relevant": false
+        }
+      ],
+      "recall": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "failure": false
+    }
+  },
+  "eligible_models": [
+    "intfloat/multilingual-e5-small",
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  ],
+  "evaluated": 1,
+  "search_space": 1,
+  "exhausted": true,
+  "minimality": "Minimum number of approved rules among tested combinations; cardinality-ordered exhaustive prefixes. No claim about arbitrary text edits.",
+  "semantic_validity": "User attests each rule and all combinations preserve relevance; not independently verified.",
+  "model_revisions": {
+    "intfloat/multilingual-e5-small": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+  },
+  "failure_count": 1,
+  "best": {
+    "query": "谁把钱借给了李明？",
+    "rule_indices": [
+      0
+    ],
+    "edit_count": 1,
+    "failing_models": [
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    ],
+    "results": {
+      "intfloat/multilingual-e5-small": {
+        "ranking": [
+          {
+            "id": "1",
+            "text": "李明向王芳借了100元。",
+            "score": 0.9127528667449951,
+            "rank": 1,
+            "relevant": true
+          },
+          {
+            "id": "0",
+            "text": "张伟向李明借了100元。",
+            "score": 0.9097662568092346,
+            "rank": 2,
+            "relevant": false
+          },
+          {
+            "id": "2",
+            "text": "王芳向张伟借了100元。",
+            "score": 0.8602084517478943,
+            "rank": 3,
+            "relevant": false
+          }
+        ],
+        "recall": 1.0,
+        "mrr": 1.0,
+        "ndcg": 1.0,
+        "failure": false
+      },
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+        "ranking": [
+          {
+            "id": "0",
+            "text": "张伟向李明借了100元。",
+            "score": 0.4728376269340515,
+            "rank": 1,
+            "relevant": false
+          },
+          {
+            "id": "1",
+            "text": "李明向王芳借了100元。",
+            "score": 0.4718254804611206,
+            "rank": 2,
+            "relevant": true
+          },
+          {
+            "id": "2",
+            "text": "王芳向张伟借了100元。",
+            "score": 0.38129252195358276,
+            "rank": 3,
+            "relevant": false
+          }
+        ],
+        "recall": 0.0,
+        "mrr": 0.5,
+        "ndcg": 0.0,
+        "failure": true
+      }
+    }
+  },
+  "failures": [
+    {
+      "query": "谁把钱借给了李明？",
+      "rule_indices": [
+        0
+      ],
+      "edit_count": 1,
+      "failing_models": [
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+      ],
+      "results": {
+        "intfloat/multilingual-e5-small": {
+          "ranking": [
+            {
+              "id": "1",
+              "text": "李明向王芳借了100元。",
+              "score": 0.9127528667449951,
+              "rank": 1,
+              "relevant": true
+            },
+            {
+              "id": "0",
+              "text": "张伟向李明借了100元。",
+              "score": 0.9097662568092346,
+              "rank": 2,
+              "relevant": false
+            },
+            {
+              "id": "2",
+              "text": "王芳向张伟借了100元。",
+              "score": 0.8602084517478943,
+              "rank": 3,
+              "relevant": false
+            }
+          ],
+          "recall": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "failure": false
+        },
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+          "ranking": [
+            {
+              "id": "0",
+              "text": "张伟向李明借了100元。",
+              "score": 0.4728376269340515,
+              "rank": 1,
+              "relevant": false
+            },
+            {
+              "id": "1",
+              "text": "李明向王芳借了100元。",
+              "score": 0.4718254804611206,
+              "rank": 2,
+              "relevant": true
+            },
+            {
+              "id": "2",
+              "text": "王芳向张伟借了100元。",
+              "score": 0.38129252195358276,
+              "rank": 3,
+              "relevant": false
+            }
+          ],
+          "recall": 0.0,
+          "mrr": 0.5,
+          "ndcg": 0.0,
+          "failure": true
+        }
+      }
+    }
+  ]
+}
