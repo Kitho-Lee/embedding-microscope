@@ -1,0 +1,26 @@
+{
+  "query": "alpha",
+  "variant": "beta",
+  "kind": "condition_change",
+  "documents": [
+    {
+      "id": "A",
+      "text": "alpha"
+    },
+    {
+      "id": "B",
+      "text": "beta"
+    }
+  ],
+  "relevant_before": [
+    "A"
+  ],
+  "relevant_after": [
+    "B"
+  ],
+  "models": [
+    "demo-word",
+    "demo-char"
+  ],
+  "k": 1
+}
