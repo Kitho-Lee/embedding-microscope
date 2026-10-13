@@ -1,0 +1,5 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { rankScores, applyEdits, subsets } from '../docs/site/browser-engine.js';
+test('independent ranking and binary relevance metrics',()=>{const documents=[{id:'A',text:'a'},{id:'B',text:'b'},{id:'C',text:'c'}];const result=rankScores([.9,.8,.1],documents,['B','C'],2);assert.equal(result.recall,.5);assert.equal(result.mrr,.5);assert.equal(result.ndcg,(1/Math.log2(3))/(1+1/Math.log2(3)));assert.equal(result.failure,false);assert.equal(rankScores([.9,.8,.1],documents,['C'],1).failure,true)});
+test('stable ties and exact edit subset ordering',()=>{assert.deepEqual(rankScores([1,1],[{id:'B',text:'b'},{id:'A',text:'a'}],['A'],1).ranking.map(d=>d.id),['A','B']);assert.deepEqual(subsets([0,1]).map(s=>s.length),[0,1,1,2]);const rules=[{source:'red',replacement:'rouge'},{source:'blue',replacement:'bleu'}];assert.equal(applyEdits('red blue',rules,[1,0]),'rouge bleu');assert.throws(()=>applyEdits('red red',[{source:'red',replacement:'x'}],[0]));assert.throws(()=>applyEdits('red blue',[{source:'red',replacement:'x'},{source:'red blue',replacement:'y'}],[0]));});
