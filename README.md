@@ -2,14 +2,27 @@
 
 **English** · [简体中文](README.zh-CN.md)
 
-### Make retrieval explain itself.
+[**Open the full online lab →**](https://kitho-lee.github.io/embedding-microscope/)
 
-**Turn model disagreements into reviewed, reduced, executable retrieval regression tests.**
+### Find the questions that make your retriever fetch the wrong passage.
 
-High embedding similarity does not guarantee relevance. Compare two retrievers on your corpus, inspect controlled rewrites, review labels and export reproducible failures as pytest tests.
+**Embedding Microscope is a debugging tool for the retrieval step in AI question-answering and RAG systems.**
 
+Give it a small set of documents, questions, and IDs of the documents that should answer each question. It runs two embedding models on the same data, shows where their results disagree, and checks whether rewording a question makes a correct result turn into a wrong one.
 
-Python · FastAPI · Sentence Transformers · SQLite · dependency-free browser UI · MIT
+For a reviewed failure, it removes unnecessary edits and exports a regression test. You can keep that test when changing models or retrieval settings, so a known error does not quietly return.
+
+### What goes in, what comes out?
+
+| You provide | The tool does | You get |
+| --- | --- | --- |
+| Documents, questions and correct-document IDs | Compare the two models' retrieved rankings | Questions where one model finds the right evidence and another does not |
+| Candidate rewrites of a question | Search the supplied edit combinations | A concrete wording change that triggers a failure |
+| Your review of the wording and labels | Remove unnecessary edits while preserving the failure | A smaller, understandable case and an executable regression test |
+
+An embedding model turns text into numeric vectors to retrieve similar content. **Similar content is not always the right answer.** This tool checks retrieval against your relevance labels; it does not judge an entire chatbot or generate answers for you.
+
+Use it when selecting an embedding model, investigating a RAG retrieval bug, or testing a model migration. Open the [online lab](https://kitho-lee.github.io/embedding-microscope/) without installing Python, or use the Python edition below.
 
 ## One experiment, one visible failure
 
@@ -130,7 +143,7 @@ Empty rules compare baseline queries. File import is capped at 5 MiB in the UI. 
 
 ## Validation and reproducibility
 
-**16 implementation tests passed** in the verified environment. They cover invalid imports, unknown labels, overlapping edits, budgets, persisted reviews, export gates and exact subset reduction. Browser verification covered actual file import, dual-model search, review, 2→1 reduction, persistence across reload and ZIP export.
+**17 implementation tests passed** in the verified environment. They cover invalid imports, unknown labels, overlapping edits, budgets, persisted reviews, export gates and exact subset reduction. Browser verification covered actual file import, dual-model search, review, 2→1 reduction, persistence across reload and ZIP export.
 
 ```bash
 pytest
@@ -163,7 +176,7 @@ Run and review state persists in `work/lab.sqlite`, excluded from Git. Set `EM_L
 
 These individual ideas have substantial prior work: [CheckList](https://github.com/marcotcr/checklist), [TextAttack](https://github.com/QData/TextAttack), [Embedding Comparator](https://vis.mit.edu/pubs/embedding-comparator.pdf), [WizMap](https://github.com/poloclub/wizmap), [Aquin CLI](https://www.aquin.app/docs/inspection/embedding), and [ALEE](https://github.com/Andrian0s/any-lang-embed-eval). Our focus is a small, inspectable **corpus → differential → review → reduction → regression** workflow. No first-of-its-kind claim is made.
 
-The visual direction takes cues from editorial typography, whitespace and restrained motion, with [FWA's digital-experience archive](https://thefwa.com/FWA25/RobFWA.html) as a quality reference. This project has no FWA award or endorsement. Reduced-motion preferences are respected; status information uses labels as well as color.
+The interface respects reduced-motion preferences and uses labels alongside color.
 
 Model conventions: [E5 model card](https://huggingface.co/intfloat/multilingual-e5-small), [MiniLM model card](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2), [Sentence Transformers](https://sbert.net/docs/package_reference/sentence_transformer/model.html). Historical v0.1/v0.2 details: [`docs/REFERENCE.md`](docs/REFERENCE.md).
 
@@ -178,7 +191,7 @@ MIT licensed. Model weights retain their own licenses.
 
 ## Languages
 
-Choose 中文 or English using the language selector. The choice is remembered across both labs. Interface and graph labels are translated; imported text, relevance labels and review notes retain their original language. Language changes preserve editor drafts and review notes in session storage.
+Choose 简体中文, 繁體中文 or English using the language selector. The choice is remembered across both labs. Interface and graph labels are translated; imported text, relevance labels and review notes retain their original language. Language changes preserve editor drafts and review notes in session storage.
 
 UI translations live in `app/static/ui-en.json`. Run `python scripts/build_i18n.py` after changing authored Chinese UI strings. Generated English files contain no automatic translation of user datasets or notes. No screenshot images are embedded in either interface or README.
 
@@ -202,3 +215,13 @@ The in-page **How to use** dialog follows this same sequence. Demo encoders are 
 - **Chinese text in English UI:** user queries, corpus text and notes retain their original language.
 
 On Windows PowerShell, activate the virtual environment using `.venv\Scripts\Activate.ps1`.
+
+## Full online edition
+
+The GitHub Pages site runs real models on arbitrary imported corpora **inside the browser**, not through prerecorded results. No Python, account or API key is needed. It uses Transformers.js 3.8.1, pinned Xenova ONNX conversions and q8 WASM inference, with E5 query/passage prefixes, mean pooling and normalized vectors. First use downloads sizeable model weights from Hugging Face and the runtime from jsDelivr; the browser caches them. Performance depends on browser memory and CPU. Corpus text is not sent to a model inference server.
+
+Simplified Chinese, Traditional Chinese and English are selectable. Search, review, reduction and run storage execute in-browser. Real-model exports contain a Node.js regression test; demo encoders export a JSON case. The Python edition retains pytest exports. Quantization and runtime differences can change near-tied rankings, so browser results are identified separately from the Python fp32 verification evidence.
+
+Online regressions: extract the ZIP, install Node.js 18+, run `npm install @huggingface/transformers@3.8.1`, then `node test_regression.mjs`. Node CPU and browser WASM may differ on near-ties; inspect scores before claiming exact cross-runtime reproduction.
+
+The site source is in `docs/site/`. After interface changes, run `python scripts/build_i18n.py` and `python scripts/build_site.py`; GitHub Pages publishes the `/docs` directory. Pure browser metric and edit tests run with `node --test tests/test_browser.mjs`.

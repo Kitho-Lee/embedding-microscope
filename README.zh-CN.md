@@ -2,9 +2,27 @@
 
 [English](README.md) · **简体中文**
 
-### 让检索行为变成可以检查的证据。
+[**直接打开在线完整版 →**](https://kitho-lee.github.io/embedding-microscope/)
 
-导入你的语料与相关性标签，对比两个 embedding 模型，审核改写后的失败案例，缩减不必要的编辑，并导出可执行的 pytest 回归测试。界面支持中文 / English，自带原生 SVG 排名图、模型矩阵和缩减轨迹，不使用截图展示结果。
+### 当 AI 找错资料时，找出触发错误的问题，并把它保存成测试。
+
+**Embedding Microscope 是给 AI 问答和 RAG 开发者使用的检索调试工具。**
+
+你提供一组资料、几个问题，以及“每个问题应该找到哪些资料”的标签。工具用两个 embedding 模型在同一份资料里检索，让你看到哪些问题一个模型找对、另一个找错，以及换一种问法后是否出现了新的错误。
+
+确认错误案例后，它会撤销不必要的文字改动，保留仍能触发错误的最小编辑组合，并导出回归测试。以后换模型或调整检索配置时，可以重跑这份测试，检查这个已知错误是否再次出现。
+
+### 你给什么，它做什么，最后得到什么？
+
+| 你提供 | 工具执行 | 你得到 |
+| --- | --- | --- |
+| 资料、问题、正确资料的 ID | 在相同语料上比较两个模型的检索排名 | 哪些问题模型 A 找对了、模型 B 没找对 |
+| 一些候选改写 | 搜索给定的文字编辑组合 | 一个能具体展示错误的问法 |
+| 对问法和标签的审核 | 撤销不必要的编辑，保留同一个错误 | 更容易理解的失败案例和可执行的回归测试 |
+
+Embedding 模型会把文字变成数字向量，用来找相近的内容。但**相近不等于能回答问题**。我们检查的是“有没有找到正确资料”，不是评价整个聊天机器人，也不会替你生成答案。
+
+适合选模型、排查 RAG 检索错误和检查模型迁移。直接打开[在线实验室](https://kitho-lee.github.io/embedding-microscope/)即可使用，不需要安装 Python；需要 Python 版本时再看下面的安装说明。
 
 ## 先看一个真实运行的例子
 
@@ -117,7 +135,7 @@ python scripts/verify_lab.py
 
 机器可读记录见 [`verification/`](verification/)。[`requirements-verified.txt`](requirements-verified.txt) 是已验证环境的版本快照，不是跨平台锁文件。
 
-本地状态保存在 `work/lab.sqlite`，不会提交到 Git。可通过 `EM_LAB_DB` 修改路径；完整运行 JSON 用于保存配置、排名与审核记录。语言字符串在 `app/static/ui-en.json`；修改中文界面后运行 `python scripts/build_i18n.py` 更新英文版本。
+本地状态保存在 `work/lab.sqlite`，不会提交到 Git。可通过 `EM_LAB_DB` 修改路径；完整运行 JSON 用于保存配置、排名与审核记录。语言字符串在 `app/static/ui-en.json`；修改中文界面后先安装 `pip install -e '.[i18n]'`，再运行 `python scripts/build_i18n.py` 更新英文版本。
 
 ## 常见问题
 
@@ -135,4 +153,14 @@ python scripts/verify_lab.py
 
 参考 [CheckList](https://github.com/marcotcr/checklist)、[TextAttack](https://github.com/QData/TextAttack)、[WizMap](https://github.com/poloclub/wizmap)、[Aquin CLI](https://www.aquin.app/docs/inspection/embedding) 与 [ALEE](https://github.com/Andrian0s/any-lang-embed-eval)。特色是将语料、差分、审核、缩减和回归连接成可检查的工作流，不宣称首创。
 
-MIT License。模型权重遵循各自许可证。视觉方向参考 FWA 作品，但本项目未获得 FWA 奖项或背书。
+MIT License。模型权重遵循各自许可证。
+
+## 直接在线使用，无需本地安装
+
+公开网址支持导入任意符合格式的语料，实时运行两个真实模型。不是预计算演示，也不需要 Python、账号或 API Key。模型通过 Transformers.js 3.8.1 在浏览器中执行：固定 Xenova ONNX 转换版本，q8 量化与 WASM，使用 E5 前缀、均值池化和归一化向量。
+
+首次会从 Hugging Face 下载较大的模型文件，并从 jsDelivr 加载运行库，之后使用浏览器缓存。速度和容量取决于设备 CPU 与内存。语料不会发送到模型推理服务器。在线版提供简体中文、繁體中文和 English；搜索、审核、缩减、记录保存都在浏览器完成。
+
+真实模型的在线案例导出 Node.js 回归测试；演示编码器导出 JSON。解压后安装 Node.js 18+，运行 `npm install @huggingface/transformers@3.8.1`，再执行 `node test_regression.mjs`。Python 版仍提供 pytest。浏览器 WASM 与 Node CPU 的近似同分排名可能不同，需检查分数；量化结果也不能直接冒充 Python fp32 验证结果。
+
+在线源码在 `docs/site/`，GitHub Pages 发布 `/docs`。更新界面后执行 `python scripts/build_i18n.py` 和 `python scripts/build_site.py`。浏览器算法测试可运行 `node --test tests/test_browser.mjs`。
