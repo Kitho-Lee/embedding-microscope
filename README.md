@@ -40,7 +40,14 @@ Distractor  张伟向李明借了100元。
 | multilingual-e5-small | 1 | 1 |
 | paraphrase-multilingual-MiniLM-L12-v2 | 1 | 2 |
 
-MiniLM ranks a distractor describing Zhang borrowing FROM Li above the passage describing who lent TO Li. E5 stays correct in this case. This small, reproducible observation is not a general ranking of model quality; the score gap is small.
+Both questions ask **who lent money to Li Ming. The correct answer is Wang Fang.**
+
+| Passage | Money is lent by → to | Answers the question? |
+| --- | --- | --- |
+| Li Ming borrowed 100 yuan from Wang Fang. | Wang Fang → Li Ming | Yes: Wang Fang is the lender |
+| Zhang Wei borrowed 100 yuan from Li Ming. | Li Ming → Zhang Wei | No: Li Ming is the lender here |
+
+After the paraphrase, MiniLM ranks the second, irrelevant passage above the correct one. E5 still ranks the correct passage first. **Zhang Wei belongs to the incorrectly retrieved passage; he is not the answer.** This demonstrates a retrieval ranking error, not its internal cause. This small, reproducible observation is not a general ranking of model quality; the score gap is small.
 
 
 ## The workflow
