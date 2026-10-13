@@ -158,7 +158,7 @@ python scripts/verify_lab.py
 
 测试语料由人工编写，不能当作代表性生产基准。尚未实现独立测试集上的检索修复比较或模型微调。项目是单用户本地工具，没有多用户审核隔离。
 
-参考 [CheckList](https://github.com/marcotcr/checklist)、[TextAttack](https://github.com/QData/TextAttack)、[WizMap](https://github.com/poloclub/wizmap)、[Aquin CLI](https://www.aquin.app/docs/inspection/embedding) 与 [ALEE](https://github.com/Andrian0s/any-lang-embed-eval)。特色是将语料、差分、审核、缩减和回归连接成可检查的工作流，不宣称首创。
+参考 [CheckList](https://github.com/marcotcr/checklist)、[TextAttack](https://github.com/QData/TextAttack)、[WizMap](https://github.com/poloclub/wizmap)、[Aquin CLI](https://www.aquin.app/docs/inspection/embedding) 与 [ALEE](https://github.com/Andrian0s/any-lang-embed-eval)。特色是将语料、差分、审核、缩减和回归连接成可检查的工作流。
 
 MIT License。模型权重遵循各自许可证。
 

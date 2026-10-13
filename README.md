@@ -181,7 +181,7 @@ Run and review state persists in `work/lab.sqlite`, excluded from Git. Set `EM_L
 
 ## Prior work and design references
 
-These individual ideas have substantial prior work: [CheckList](https://github.com/marcotcr/checklist), [TextAttack](https://github.com/QData/TextAttack), [Embedding Comparator](https://vis.mit.edu/pubs/embedding-comparator.pdf), [WizMap](https://github.com/poloclub/wizmap), [Aquin CLI](https://www.aquin.app/docs/inspection/embedding), and [ALEE](https://github.com/Andrian0s/any-lang-embed-eval). Our focus is a small, inspectable **corpus → differential → review → reduction → regression** workflow. No first-of-its-kind claim is made.
+These individual ideas have substantial prior work: [CheckList](https://github.com/marcotcr/checklist), [TextAttack](https://github.com/QData/TextAttack), [Embedding Comparator](https://vis.mit.edu/pubs/embedding-comparator.pdf), [WizMap](https://github.com/poloclub/wizmap), [Aquin CLI](https://www.aquin.app/docs/inspection/embedding), and [ALEE](https://github.com/Andrian0s/any-lang-embed-eval). Our focus is a small, inspectable **corpus → differential → review → reduction → regression** workflow.
 
 The interface respects reduced-motion preferences and uses labels alongside color.
 
